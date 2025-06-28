@@ -77,6 +77,7 @@ public class ChooseOne extends AppCompatActivity {
                     startActivity(register);
                     //finish();
                 }
+
             }
         });
 

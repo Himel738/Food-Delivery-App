@@ -56,4 +56,18 @@
         <item>Dum chicken</item>
         <item>Hyderabadi Chicken Biryni</item>
     </string-array>
+
+    <string-array name="state_array">
+        <item>Dhaka</item>
+        <item>Chattogram</item>
+        <item>Khulna</item>
+        <item>Rajshahi</item>
+    </string-array>
+
+    <string-array name="city_array">
+        <item>Dhaka</item>
+        <item>Chattogram</item>
+        <item>Khulna</item>
+        <item>Rajshahi</item>
+    </string-array>
 </resources>

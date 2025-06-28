@@ -118,7 +118,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:ccp_defaultNameCode="BD"
-                    app:ccp_defaultPhoneCode="+880"
                     app:ccp_showNameCode="false"/>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -150,13 +149,171 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="HouseNo/Street/PostCode"
+                    android:hint="HouseNo/StreeNo"
                     android:inputType="text"
                     android:drawableLeft="@drawable/adress"
                     android:drawablePadding="10dp"
                     >
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/Area"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Area"
+                    android:inputType="textMultiLine"
+                    android:drawableLeft="@drawable/adress"
+                    android:drawablePadding="10dp"
+                    >
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/PostCode"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PostCode"
+                    android:inputType="number"
+                    android:drawableLeft="@drawable/adress"
+                    android:drawablePadding="10dp"
+                    >
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Choose Your State:"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/state"
+                android:layout_marginTop="5dp"
+                android:entries="@array/state_array" />
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Choose Your City:"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/city"
+                android:layout_marginTop="5dp"
+                android:entries="@array/city_array"/>
+
+            <Button
+                android:id="@+id/Signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_shape"
+                android:text="Register"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                >
+                <TableRow
+                    android:id="@+id/hr"
+                    android:layout_width="105dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#595858" />
+                <TextView
+                    android:id="@+id/OR"
+                    android:layout_width="44dp"
+                    android:layout_height="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:textAlignment="center"
+                    android:text="OR"
+                    android:textColor="@color/Black"
+                    android:textSize="17sp"
+                    android:layout_marginTop="7dp"
+                    android:layout_gravity="center"/>
+                <TableRow
+                    android:id="@+id/dr"
+                    android:layout_width="105dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#595858" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvv"
+                android:text="Signin with"
+                android:textColor="@color/Black"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:textSize="18sp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:id="@+id/email"
+                    android:layout_width="97dp"
+                    android:layout_height="50dp"
+                    android:text="Email"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/btnred"
+                    android:drawableLeft="@drawable/email_icon"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+
+                    />
+
+                <Button
+                    android:id="@+id/phone"
+                    android:layout_width="97dp"
+                    android:layout_height="50dp"
+                    android:text="Phone"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btnblueish"
+                    android:drawableLeft="@drawable/phone_icon"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
