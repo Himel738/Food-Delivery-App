@@ -13,6 +13,39 @@
         android:theme="@style/FoodDeliveryAppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".DeliveryLoginRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryLoginPhone"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryLoginEmail"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerLoginRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerLoginPhone"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerLoginEmail"
+            android:exported="false" />
+        <activity
+            android:name=".ChefRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".ChefLoginPhone"
+            android:exported="false" />
+        <activity
+            android:name=".ChefLoginEmail"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseOne"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
