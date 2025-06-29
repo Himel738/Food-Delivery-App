@@ -62,7 +62,12 @@
         <item>Chattogram</item>
         <item>Khulna</item>
         <item>Rajshahi</item>
+        <item>Barisal</item>
+        <item>Sylhet</item>
+        <item>Rangpur</item>
+        <item>Mymensingh</item>
     </string-array>
+
 
     <string-array name="city_array">
         <item>Dhaka</item>

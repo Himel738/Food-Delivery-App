@@ -13,7 +13,7 @@
         android:theme="@style/FoodDeliveryAppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".DeliveryLoginRegistration"
+            android:name=".DeliveryRegistration"
             android:exported="false" />
         <activity
             android:name=".DeliveryLoginPhone"
@@ -22,7 +22,7 @@
             android:name=".DeliveryLoginEmail"
             android:exported="false" />
         <activity
-            android:name=".CustomerLoginRegistration"
+            android:name=".CustomerRegistration"
             android:exported="false" />
         <activity
             android:name=".CustomerLoginPhone"

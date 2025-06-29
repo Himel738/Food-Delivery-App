@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -95,7 +94,7 @@ public class ChooseOne extends AppCompatActivity {
                     finish();
                 }
                 if(type.equals("Signup")){
-                    Intent registercustomer = new Intent(ChooseOne.this,CustomerLoginRegistration.class);
+                    Intent registercustomer = new Intent(ChooseOne.this, CustomerRegistration.class);
                     startActivity(registercustomer);
                     //finish();
                 }
@@ -116,7 +115,7 @@ public class ChooseOne extends AppCompatActivity {
                     finish();
                 }
                 if(type.equals("Signup")){
-                    Intent registerdeliveryman = new Intent(ChooseOne.this,DeliveryLoginRegistration.class);
+                    Intent registerdeliveryman = new Intent(ChooseOne.this, DeliveryRegistration.class);
                     startActivity(registerdeliveryman);
                     //finish();
                 }

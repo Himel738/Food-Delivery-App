@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img10"
+    android:background="@drawable/img9"
     tools:context=".ChefRegistration">
 
     <ScrollView
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:id="@+id/Firstname"
+                android:id="@+id/Fname"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:id="@+id/Lastname"
+                android:id="@+id/Lname"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:id="@+id/Email"
+                android:id="@+id/Emailid"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
                 app:passwordToggleEnabled="true"
-                android:id="@+id/Pwd"
+                android:id="@+id/Password"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:passwordToggleEnabled="true"
-                android:id="@+id/Cpass">
+                android:id="@+id/Confirmpass">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                 android:layout_margin="11dp"
                 android:orientation="horizontal">
                 <com.hbb20.CountryCodePicker
-                    android:id="@+id/CountryCode"
+                    android:id="@+id/ctrycode"
                     android:layout_width="100dp"
                     app:ccp_showFullName="false"
                     app:ccp_showPhoneCode="true"
@@ -122,7 +122,7 @@
                     app:ccp_showNameCode="false"/>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Mobileno"
+                    android:id="@+id/Mobilenumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -144,14 +144,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:id="@+id/HouseNo"
+                app:errorEnabled="true"
+                android:id="@+id/Localadress"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="HouseNo/StreeNo"
-                    android:inputType="text"
+                    android:hint="Local Adress"
+                    android:inputType="textMultiLine"
                     android:drawableLeft="@drawable/adress"
                     android:drawablePadding="10dp"
                     >
@@ -161,7 +161,6 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:id="@+id/Area"
                 >
                 <com.google.android.material.textfield.TextInputEditText
@@ -219,7 +218,7 @@
                 android:entries="@array/city_array"/>
 
             <Button
-                android:id="@+id/Signup"
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
