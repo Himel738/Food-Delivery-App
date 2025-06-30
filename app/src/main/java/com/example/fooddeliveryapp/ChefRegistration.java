@@ -1,5 +1,8 @@
 package com.example.fooddeliveryapp;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,18 +12,24 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.datatransport.runtime.dagger.Reusable;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChefRegistration extends AppCompatActivity {
     String[] Dhaka = {
@@ -96,6 +105,7 @@ public class ChefRegistration extends AppCompatActivity {
         pincode = (TextInputLayout) findViewById(R.id.PostCode);
         Statespin = (Spinner) findViewById(R.id.state);
         Cityspin = (Spinner) findViewById(R.id.city);
+
 
         signup = (Button) findViewById(R.id.Signup);
         Emaill = (Button) findViewById(R.id.email);
@@ -176,6 +186,17 @@ public class ChefRegistration extends AppCompatActivity {
             }
 
         });
+        Cityspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object value = parent.getItemAtPosition(position);
+                cityy = value.toString().trim();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getInstance().getReference("Chef");
@@ -193,14 +214,82 @@ public class ChefRegistration extends AppCompatActivity {
                 Area = area.getEditText().getText().toString().trim();
                 Pincode = pincode.getEditText().getText().toString().trim();
                 cityy = Cityspin.getSelectedItem().toString().trim();
+
+                if(isValid())
+                {
+                    final ProgressDialog mDialog = new ProgressDialog(ChefRegistration.this);
+                    mDialog.setCancelable(false);
+                    mDialog.setCanceledOnTouchOutside(false);
+                    mDialog.setMessage("Registering User Please Wait...");
+                    mDialog.show();
+
+                    FAuth.createUserWithEmailAndPassword(emailid,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful())
+                            {
+                                String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                databaseReference = FirebaseDatabase.getInstance().getReference("Chef").child(useridd);
+                                final HashMap<String,String> hashMap = new HashMap<>();
+                                hashMap.put("Role",role);
+                                databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        HashMap<String,String> hashMap1 = new HashMap<>();
+                                        hashMap1.put("FirstName",fname);
+                                        hashMap1.put("LastName",lname);
+                                        hashMap1.put("Email",emailid);
+                                        hashMap1.put("Mobile",mobile);
+                                        hashMap1.put("HouseNo",house);
+                                        hashMap1.put("Area",Area);
+                                        hashMap1.put("Pincode",Pincode);
+                                        hashMap1.put("State",statee);
+                                        hashMap1.put("City",cityy);
+                                        hashMap1.put("Password",password);
+                                        hashMap1.put("Confirm Password",confpassword);
+
+                                        firebaseDatabase.getInstance().getReference("Chef")
+                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                .setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        mDialog.dismiss();
+                                                        FAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                if(task.isSuccessful())
+                                                                {
+                                                                    AlertDialog.Builder builder = new AlertDialog.Builder(ChefRegistration.this);
+                                                                    builder.setMessage("You Have Registered! Now Please Verify Your Email Address");
+                                                                    builder.setCancelable(false);
+                                                                    builder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+                                                                        @Override
+                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                            dialog.dismiss();
+                                                                        }
+                                                                    });
+
+                                                                    AlertDialog Alert = builder.create();
+                                                                    Alert.show();
+
+                                                                }
+                                                                else {
+                                                                    mDialog.dismiss();
+                                                                    ReusableCodeForAll.ShowAlert(ChefRegistration.this,"Error",task.getException().getMessage());
+                                                                }
+                                                            }
+                                                        });
+
+                                                    }
+                                                });
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
             }
         });
-
-        if(isValid())
-        {
-            //WorkWillStartFromHereGoodNight
-        }
-
 
     }
 
