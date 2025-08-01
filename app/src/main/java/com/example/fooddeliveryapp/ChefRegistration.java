@@ -3,6 +3,7 @@ package com.example.fooddeliveryapp;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -229,7 +230,7 @@ public class ChefRegistration extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                databaseReference = FirebaseDatabase.getInstance().getReference("Chef").child(useridd);
+                                databaseReference = FirebaseDatabase.getInstance().getReference("User").child(useridd);
                                 final HashMap<String,String> hashMap = new HashMap<>();
                                 hashMap.put("Role",role);
                                 databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -266,6 +267,10 @@ public class ChefRegistration extends AppCompatActivity {
                                                                         @Override
                                                                         public void onClick(DialogInterface dialog, int which) {
                                                                             dialog.dismiss();
+                                                                            String phonenumber = Cpp.getSelectedCountryCodeWithPlus()+mobile;
+                                                                            Intent b = new Intent(ChefRegistration.this,ChefVerifyPhone.class);
+                                                                            b.putExtra("phonenumber",phonenumber);
+                                                                            startActivity(b);
                                                                         }
                                                                     });
 
@@ -284,10 +289,28 @@ public class ChefRegistration extends AppCompatActivity {
                                                 });
                                     }
                                 });
+                            } else{
+                                mDialog.dismiss();
+                                ReusableCodeForAll.ShowAlert(ChefRegistration.this,"Error",task.getException().getMessage());
                             }
                         }
                     });
                 }
+            }
+        });
+
+        Email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity((new Intent(ChefRegistration.this,ChefLoginEmail.class)));
+                finish();
+            }
+        });
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity((new Intent(ChefRegistration.this,ChefLoginPhone.class)));
+                finish();
             }
         });
 

@@ -95,7 +95,6 @@
             android:textStyle="bold"
             android:textColor="@color/Black"
             android:textSize="17sp"
-            android:text="------------------ OR ------------------"
             android:layout_gravity="center"
             />
         <Button
