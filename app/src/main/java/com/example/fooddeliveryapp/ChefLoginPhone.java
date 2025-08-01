@@ -38,8 +38,8 @@ public class ChefLoginPhone extends AppCompatActivity {
         cpp=(CountryCodePicker)findViewById(R.id.CountryCode);
         signinemail=(Button)findViewById(R.id.btnEmail);
         signup = (TextView)findViewById(R.id.acsignup);
-
         Fauth = FirebaseAuth.getInstance();
+
         sendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

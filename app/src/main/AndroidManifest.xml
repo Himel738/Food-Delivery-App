@@ -13,6 +13,18 @@
         android:theme="@style/FoodDeliveryAppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".Deliverysendotp"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryFoodPanel_BottomNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryPerson_verifyPhone"
+            android:exported="false" />
+        <activity
             android:name=".CustomerForgotPassword"
             android:exported="false" />
         <activity

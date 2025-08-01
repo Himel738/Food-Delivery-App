@@ -76,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
                                     finish();
 
                                 }
-                                else if("Customer".equals(role)){
+                                 if("Customer".equals(role)){
                                     startActivity(new Intent(MainActivity.this,CustomerFoodPanel_BottomNavigation.class));
                                     finish();
                                 }
-                                else {
-                                    Toast.makeText(MainActivity.this, "Role not found in database", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(MainActivity.this, MainMenu.class));
+                                if("DeliveryPerson".equals(role)){
+                                    startActivity(new Intent(MainActivity.this,DeliveryFoodPanel_BottomNavigation.class));
                                     finish();
+
                                 }
                             }
 

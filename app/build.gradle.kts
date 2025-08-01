@@ -53,6 +53,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation (
         "com.hbb20:ccp:2.6.0")
+    implementation("com.google.android.material:material:1.1.0")
 
     implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
     implementation("com.google.firebase:firebase-auth")
